@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="RolloInputParameter">
+		<xs:annotation>
+			<xs:documentation>Root</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Action">
+					<xs:annotation>
+						<xs:documentation>0 = Undefiniert
+1 = Neu
+2 = Bearbeiten
+3 = Löschen
+4 = Kopieren
+5 = Bestellen </xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="3"/>
+							<xs:enumeration value="4"/>
+							<xs:enumeration value="5"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Background" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Gibt an ob der Aufruf im Hintergrund durchgeführt werden soll, ohne dass der Konfigurator aufgeht.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ConfigurationId" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Konfigurations-ID</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="OrderNumber" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Auftragnummer</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ShutterType" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Rolladenart
+0 = Undefiniert
+1 = Aufsatzrolladen
+2 = Vorbaurolladen</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="LanguageCode">
+					<xs:annotation>
+						<xs:documentation>Ländercode 2 stellig
+de, en, fr usw.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Quantity">
+					<xs:annotation>
+						<xs:documentation>Anzahl</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="BoxId" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Rollokasten-ID z.B.: 240/250</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ElementList" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Liste der Panzer</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Element" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Panzer</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Width" type="xs:float">
+											<xs:annotation>
+												<xs:documentation>Rahmenbreite</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Height" type="xs:float">
+											<xs:annotation>
+												<xs:documentation>Rahmenhöhe incl. Kasten</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="OperationSide">
+											<xs:annotation>
+												<xs:documentation>Bedienseite
+0 = Keine
+1 = Links
+2 = Rechts
+3 = Unbekannt</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:int">
+													<xs:enumeration value="0"/>
+													<xs:enumeration value="1"/>
+													<xs:enumeration value="2"/>
+													<xs:enumeration value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="OperationId" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Rolloantrieb-ID z.B.: Motor, Gurt usw.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="AxleContinuous" type="xs:boolean">
+											<xs:annotation>
+												<xs:documentation>Gibt an ob die Rollowelle durchgehen ist oder nicht.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="AxleId" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Rollowelle-ID z.B. SW50, SW60 usw.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="CurtainId" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Rollopanzer-ID z.B.: K38, K33, usw.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="CurtainColorId" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Rollopanzer-Farbe-ID z.B.: DB702, DB703, usw.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="Index" use="required">
+										<xs:annotation>
+											<xs:documentation>Panzernummer</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:integer">
+												<xs:enumeration value="1"/>
+												<xs:enumeration value="2"/>
+												<xs:enumeration value="3"/>
+												<xs:enumeration value="4"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Width">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:enumeration value="650.7"/>
+				<xs:enumeration value="674.6"/>
+				<xs:enumeration value="674.7"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ShutterType">
+		<xs:simpleType>
+			<xs:restriction base="xs:byte">
+				<xs:enumeration value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Quantity">
+		<xs:simpleType>
+			<xs:restriction base="xs:byte">
+				<xs:enumeration value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PartNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="TOP"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="OrderID">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:enumeration value="123456"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="OperationSide">
+		<xs:simpleType>
+			<xs:restriction base="xs:byte">
+				<xs:enumeration value="0"/>
+				<xs:enumeration value="1"/>
+				<xs:enumeration value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="OperationMode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="M"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="LanguageCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="DE"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Height">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:enumeration value="1460.0"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ElementList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Element" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Element">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Width"/>
+				<xs:element ref="Height"/>
+				<xs:element ref="OperationSide"/>
+				<xs:element ref="OperationMode" minOccurs="0"/>
+				<xs:element ref="AxleID"/>
+				<xs:element ref="AxleContinuous"/>
+				<xs:element ref="CurtainType"/>
+			</xs:sequence>
+			<xs:attribute name="Index" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+						<xs:enumeration value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CurtainType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Alu-Panzer A 36"/>
+				<xs:enumeration value="Alu-Panzer A 37"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ConfigurationId">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="345A60B7-47FA-4FF1-90D1-2237E45DDA1E"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="BoxID">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="240/260"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Background" type="xs:boolean"/>
+	<xs:element name="AxleID">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="XYZ"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="AxleContinuous" type="xs:boolean"/>
+	<xs:element name="Action">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:enumeration value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

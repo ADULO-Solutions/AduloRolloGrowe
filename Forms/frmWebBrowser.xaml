@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CefSharp.MinimalExample.Wpf"
+        xmlns:Wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:Behaviours="clr-namespace:CefSharp.MinimalExample.Wpf.Behaviours" x:Class="CefSharp.MinimalExample.Wpf.WebBrowser"
+        mc:Ignorable="d"
+        Title="WebBrowser" Height="450" Width="800">
+    <Grid>
+
+        <Wpf:ChromiumWebBrowser x:Name="Browser"
+            Address="https://www.google.com" Margin="0,1,0,0">
+            <b:Interaction.Behaviors>
+                <Behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
+            </b:Interaction.Behaviors>
+        </Wpf:ChromiumWebBrowser>
+
+    </Grid>
+</Window>

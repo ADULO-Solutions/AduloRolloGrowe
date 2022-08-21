@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RolloOutputData>
+  <ConfigurationId>string</ConfigurationId>
+  <Description>string</Description>
+  <Price>12.76</Price>
+  <BoxId />
+  <ElementList>
+    <Element Index="2">
+      <Width>957000000000.235</Width>
+      <Height>343700000000.235</Height>
+      <OperationSide>0</OperationSide>
+      <AxleContinuous>1</AxleContinuous>
+      <AxleId>string</AxleId>
+    </Element>
+    <Element Index="1">
+      <Width>200.2</Width>
+      <Height>200.8</Height>
+      <OperationSide>3</OperationSide>
+      <AxleContinuous>0</AxleContinuous>
+      <CurtainColorId>string</CurtainColorId>
+    </Element>
+    <Element Index="4">
+      <Width>34463100000000.2</Width>
+      <Height>14600300000000.2</Height>
+      <OperationSide>3</OperationSide>
+      <AxleContinuous>true</AxleContinuous>
+      <CurtainColorId>string</CurtainColorId>
+    </Element>
+    <Element Index="3">
+      <Width>32632700000000.2</Width>
+      <Height>-38966599999999.8</Height>
+      <OperationSide>0</OperationSide>
+      <OperationId>string</OperationId>
+      <AxleContinuous>0</AxleContinuous>
+      <CurtainId>string</CurtainId>
+      <CurtainColorId>string</CurtainColorId>
+    </Element>
+    <Element Index="2">
+      <Width>-169999999999.765</Width>
+      <Height>-12275899999999.8</Height>
+      <OperationSide>0</OperationSide>
+      <AxleContinuous>0</AxleContinuous>
+      <AxleId>string</AxleId>
+      <CurtainId>string</CurtainId>
+      <CurtainColorId>string</CurtainColorId>
+    </Element>
+  </ElementList>
+  <Message>string</Message>
+  <Result>0</Result>
+</RolloOutputData>

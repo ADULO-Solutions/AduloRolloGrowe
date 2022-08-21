@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RolloInputParameter>
+  <Action>5</Action>
+  <Background>0</Background>
+  <ConfigurationId>string</ConfigurationId>
+  <OrderNumber>12345</OrderNumber>
+  <ShutterType>-3801</ShutterType>
+  <LanguageCode />
+  <Quantity>5</Quantity>
+  <BoxId />
+  <ElementList>
+    <Element Index="3">
+      <Width>14321400000000.2</Width>
+      <Height>43172200000000.2</Height>
+      <OperationSide>2</OperationSide>
+      <OperationId>string</OperationId>
+      <AxleContinuous>false</AxleContinuous>
+      <CurtainId>string</CurtainId>
+    </Element>
+    <Element Index="3">
+      <Width>30088100000000.2</Width>
+      <Height>38043900000000.2</Height>
+      <OperationSide>3</OperationSide>
+      <AxleContinuous>0</AxleContinuous>
+      <CurtainId>string</CurtainId>
+      <CurtainColorId>string</CurtainColorId>
+    </Element>
+  </ElementList>
+</RolloInputParameter>
