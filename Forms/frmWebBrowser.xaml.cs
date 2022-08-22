@@ -20,6 +20,8 @@ namespace CefSharp.MinimalExample.Wpf
         public WebBrowser()
         {
             InitializeComponent();
+            
+            
         }
     }
 }

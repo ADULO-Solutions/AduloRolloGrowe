@@ -139,34 +139,93 @@ namespace AduloRolloGrowe
             public string name { get; set; }
             public string leistung_id { get; set; }
         }
+
+        #endregion GetlistConfigurations
+        #region Position
+        public class CommonPosition
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public CommonPosition()
+            { }
+
+            public bool result { get; set; }
+            public Dictionary<string, position> position { get; set; }
+
+            //{
+            //    "result":true,
+            //    "position":{
+            //        "1264":{
+            //            "position_id":"1264",
+            //            "leistung_id":"7",
+            //            "menge":"1",
+            //            "breite":"1200",
+            //            "hoehe":"2500",
+            //            "text":"Rollladenpanzer PVC RE52 in Hellgrau, mit Arretierung, Aufh\u00e4ngefeder Maxi zum Einh\u00e4ngen beschichtet<br \/>\nAlu-Winkelendleiste W-SL in Nougatbraun<br \/>\nMa\u00dfe:\t1 x 1200 x 2500 mm\t= 3,00 qm\n",
+            //            "ep":"39,85",
+            //            "lp":null,
+            //            "bemerkung":"",
+            //            "berechnet":2022-04-21 09:41:51,
+            //            "kommission":"",
+            //            "bild":"<url>"
+            //            "anbaute":"0"
+            //            "aufsatz":"0"
+            //        }
+            //    }
+            //}
+
+        }
+        public class position
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public position()
+            { }
+
+            public int position_id { get; set; }
+            public int leistung_id { get; set; }
+            public int menge { get; set; }
+            public int breite { get; set; }
+            public int hoehe { get; set; }
+            public string text { get; set; }
+            public string ep { get; set; }
+            public string lp { get; set; }
+            public string bemerkung { get; set; }
+            public string berechnet { get; set; }
+            public string kommission { get; set; }
+            public string bild { get; set; }
+            public int anbaute { get; set; }
+            public int aufsatz { get; set; }
+        }
+        #endregion Position
+
+
+
+        #region ReadConfiguration 
+        //    {
+        //    "result":true,
+        //    "variante":{
+        //        "1234":{
+        //            "variante_id":"1234",
+        //            "name":"Testpanzer",
+        //            "leistung_id":"7",
+        //            "param_panzer_id":"1",
+        //            "param_farbe__panzer_id":"537",
+        //            "param_farbe__panzer_ral_id":"",
+        //            "param_endleiste_id":"2",
+        //            "param_farbe__endleiste_id":"598",
+        //            "param_farbe__endleiste_ral_id":"",
+        //            "param_endleiste_stopper_id":"5",
+        //            "param_endleiste_stopper_groesse_id":"3",
+        //            "param_farbe__stopper_id":"",
+        //            "param_panzer_aufhaengung_id":"7"
+        //        }
+        //    }
+        //}
+        #endregion readConfiguration
     }
-    #endregion GetlistConfigurations
-
-
-
-
-    #region ReadConfiguration 
-    //    {
-    //    "result":true,
-    //    "variante":{
-    //        "1234":{
-    //            "variante_id":"1234",
-    //            "name":"Testpanzer",
-    //            "leistung_id":"7",
-    //            "param_panzer_id":"1",
-    //            "param_farbe__panzer_id":"537",
-    //            "param_farbe__panzer_ral_id":"",
-    //            "param_endleiste_id":"2",
-    //            "param_farbe__endleiste_id":"598",
-    //            "param_farbe__endleiste_ral_id":"",
-    //            "param_endleiste_stopper_id":"5",
-    //            "param_endleiste_stopper_groesse_id":"3",
-    //            "param_farbe__stopper_id":"",
-    //            "param_panzer_aufhaengung_id":"7"
-    //        }
-    //    }
-    //}
-    #endregion readConfiguration
 }
 
 

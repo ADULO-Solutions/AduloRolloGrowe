@@ -40,6 +40,7 @@ namespace AduloRolloGrowe
          copyConfiguration,
          editConfiguration,
          readConfiguration,
+         isLeistungInConfiguration,
          listConfigurations,
          validatePosition,
          createNewPosition,
@@ -63,25 +64,27 @@ namespace AduloRolloGrowe
                 public string ApiToken { get; set; }
                 public string Apiversion { get; set; }
                 public string GetJson { get; set; }
-            #endregion Main Properties
-            #region Configuration
+       #endregion Main Properties
+       #region Configuration
                 public int Leistung_id { get; set; }
                 public int Param_panzer_id { get; set; }
                 public int Param_farbe__panzer_id { get; set; }
                 public int Param_endleiste_id { get; set; }
                 public int Param_panzer_aufhaengung_id { get; set; }
                 public string Variante_id { get; set; }
-            #endregion Configuration
+        #endregion Configuration
 
-            #region Position
+        #region Position
+                public int PositionID { get; set; }
                 public int Menge { get; set; }
                 public int Breite { get; set; }
                 public int Hoehe { get; set; }
         #endregion Position
-        #region list
+        #region Dictionarys
             public Dictionary<string, In.variante> Variants { get; set; }
             public Dictionary<string, In.leistung> Leistung { get; set; }
-        #endregion
+            public Dictionary<string, In.CommonPosition> Position { get; set; }
+        #endregion Dictionarys
         #endregion Properties
         #region Constructor
         public RestClient()
@@ -138,14 +141,14 @@ namespace AduloRolloGrowe
                     {
                         using (StreamReader reader = new StreamReader(responseStream))
                         {
-                            strResponseValue = reader.ReadToEnd();
+                            GetJson = reader.ReadToEnd();
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                strResponseValue = "{\"errorMessages\":[\"" + ex.Message.ToString() + "\"],\"errors\":{}}";
+                GetJson = "{\"errorMessages\":[\"" + ex.Message.ToString() + "\"],\"errors\":{}}";
             }
             finally
             {
@@ -154,6 +157,14 @@ namespace AduloRolloGrowe
                     ((IDisposable)response).Dispose();
                 }
             }
+            Response();
+            return true;
+        }//End of MakeRequest
+        /// <summary>
+        /// Processed the response from the Restful API
+        /// </summary>
+        private void Response()
+        {
             ////////////Response////////////////////
             var serializeOptions = new JsonSerializerOptions();
             serializeOptions.Converters.Add(new StringConverter());
@@ -161,56 +172,61 @@ namespace AduloRolloGrowe
             {
                 case FunctionType.authentificate:
                     In.Authentification? authentification =
-                    JsonSerializer.Deserialize<In.Authentification>(strResponseValue);
+                    JsonSerializer.Deserialize<In.Authentification>(GetJson);
                     ApiToken = authentification?.apitoken;
                     break;
                 case FunctionType.getLeistungen:
-                    In.GetLeistung leistungObject = JsonSerializer.Deserialize<In.GetLeistung>(strResponseValue, serializeOptions);
+                    In.GetLeistung leistungObject = JsonSerializer.Deserialize<In.GetLeistung>(GetJson, serializeOptions);
                     Leistung = leistungObject.leistung;
                     break;
                 case FunctionType.createNewConfiguration:
                     In.CreateCopyConfiguration? createNewConfiguration =
-                    JsonSerializer.Deserialize<In.CreateCopyConfiguration>(strResponseValue);
+                    JsonSerializer.Deserialize<In.CreateCopyConfiguration>(GetJson);
                     break;
                 case FunctionType.copyConfiguration:
                     In.CreateCopyConfiguration? copyConfiguration =
-                    JsonSerializer.Deserialize<In.CreateCopyConfiguration>(strResponseValue);
+                    JsonSerializer.Deserialize<In.CreateCopyConfiguration>(GetJson);
                     break;
                 case FunctionType.editConfiguration:
                     In.CommonBoolean? editConfiguration =
-                    JsonSerializer.Deserialize<In.CommonBoolean>(strResponseValue);
+                    JsonSerializer.Deserialize<In.CommonBoolean>(GetJson);
+                    break;
+                case FunctionType.readConfiguration:
+
+                    break;
+                case FunctionType.isLeistungInConfiguration:
+
                     break;
                 case FunctionType.listConfigurations:
-                    In.GetlistConfigurations listObject = JsonSerializer.Deserialize<In.GetlistConfigurations>(strResponseValue, serializeOptions);
+                    In.GetlistConfigurations listObject = JsonSerializer.Deserialize<In.GetlistConfigurations>(GetJson, serializeOptions);
                     List<In.GetlistConfigurations> configurations = new List<In.GetlistConfigurations>();
                     Variants = listObject.variante;
+                    break;
+                case FunctionType.validatePosition:
+
                     break;
                 case FunctionType.createNewPosition:
 
                     break;
                 case FunctionType.copyPosition:
-                    break;
+                    goto case FunctionType.createNewPosition;
                 case FunctionType.editPosition:
+                    goto case FunctionType.createNewPosition;
 
-                    break;
                 case FunctionType.readPosition:
                     break;
-                case FunctionType.validatePosition:
-                    break;
-            }
 
-            GetJson = strResponseValue;
-            return true;
-        }//End of makeRequest
+            }
+        }//End of Response
+
         /// <summary>
-        /// 
+        /// Builds the post string for the given methode.
         /// </summary>
         /// <returns></returns>
         private void PostString()
         {
             switch (Methode)
             {
-
                 case FunctionType.authentificate:
                     PostJSON = "";
                     break;
@@ -256,6 +272,15 @@ namespace AduloRolloGrowe
                     };
                     PostJSON = JsonSerializer.Serialize<Out.CommonRequestForPosition>(readConfiguration);
                     break;
+
+                case FunctionType.isLeistungInConfiguration:
+                    var isLeistungInConfiguration = new Out.IsLeistungInConfiguration
+                    {
+                        apitoken = ApiToken,
+                        variante_id = Variante_id
+                    };
+                    PostJSON = JsonSerializer.Serialize<Out.IsLeistungInConfiguration>(isLeistungInConfiguration);
+                    break;
                 case FunctionType.listConfigurations:
                     var getKonfigurations = new Out.commonRequest
                     {
@@ -264,15 +289,26 @@ namespace AduloRolloGrowe
                     PostJSON = JsonSerializer.Serialize<Out.commonRequest>(getKonfigurations);
                     break;
                 case FunctionType.createNewPosition:
+                    // TODO
+                    var position = new Out.CreateNewPosition
+                    {
+                        apitoken = ApiToken,
 
+
+                    };
                     break;
                 case FunctionType.copyPosition:
+                    var copyPosition = new Out.CopyReadPosition
+                    {
+                        apitoken = ApiToken,
+                        position_id = PositionID
+                    };
+                    PostJSON = JsonSerializer.Serialize<Out.CopyReadPosition>(copyPosition);
                     break;
                 case FunctionType.editPosition:
-
                     break;
                 case FunctionType.readPosition:
-                    break;
+                    goto case FunctionType.copyPosition;
                 case FunctionType.validatePosition:
                     break;
 

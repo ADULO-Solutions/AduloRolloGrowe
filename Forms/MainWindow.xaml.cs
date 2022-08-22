@@ -104,5 +104,11 @@ namespace AduloRolloGrowe
             leistung = rClient.Leistung;
             
     }
+
+        private void btnWebbrowser_Click(object sender, RoutedEventArgs e)
+        {
+            CefSharp.MinimalExample.Wpf.WebBrowser webbrowser = new CefSharp.MinimalExample.Wpf.WebBrowser();
+            webbrowser.Show();
+        }
     }
 }

@@ -6,15 +6,18 @@
         xmlns:local="clr-namespace:CefSharp.MinimalExample.Wpf"
         xmlns:Wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:Behaviours="clr-namespace:CefSharp.MinimalExample.Wpf.Behaviours" x:Class="CefSharp.MinimalExample.Wpf.WebBrowser"
         mc:Ignorable="d"
-        Title="WebBrowser" Height="450" Width="800">
-    <Grid>
+        Title="WebBrowser" Height="1151" Width="989">
+    <Grid Margin="0,0,0,19">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
 
         <Wpf:ChromiumWebBrowser x:Name="Browser"
-            Address="https://www.google.com" Margin="0,1,0,0">
+            Address="https://gkm-test2.rollladen-growe.de/panzer/index?api=1" Margin="0,1,0,0">
             <b:Interaction.Behaviors>
                 <Behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
             </b:Interaction.Behaviors>
         </Wpf:ChromiumWebBrowser>
-
     </Grid>
 </Window>
